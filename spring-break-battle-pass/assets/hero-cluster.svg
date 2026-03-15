@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190" fill="none">
+  <defs>
+    <linearGradient id="hair" x1="96" x2="162" y1="40" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8D4A2D"/>
+      <stop offset="1" stop-color="#4A2417"/>
+    </linearGradient>
+    <linearGradient id="redSuit" x1="90" x2="176" y1="96" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7A57"/>
+      <stop offset="1" stop-color="#C73A30"/>
+    </linearGradient>
+    <linearGradient id="botMetal" x1="200" x2="304" y1="46" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3F1EC"/>
+      <stop offset="1" stop-color="#97A0AA"/>
+    </linearGradient>
+    <linearGradient id="botBody" x1="194" x2="298" y1="88" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB53F"/>
+      <stop offset="1" stop-color="#CE5C1D"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#shadow)">
+    <path fill="#5FC5FF" d="m268 20 8 16 18 2-13 11 4 17-15-9-15 9 4-17-13-11 18-2 4-16Z" opacity=".9"/>
+    <path fill="#FFC531" d="m50 24 5 10 11 1-8 7 2 10-10-5-9 5 2-10-8-7 11-1 4-10Z"/>
+  </g>
+  <g transform="translate(34 18)">
+    <path fill="url(#hair)" d="M52 28c21-23 72-21 90 3 14 18 13 56 3 78l-25 12-65-3c-15-16-25-59-3-90Z"/>
+    <path fill="#B66942" d="M63 36c16-12 50-13 66 2-8-3-17-5-30-5-15 0-26 2-36 7V36Z" opacity=".55"/>
+    <path fill="#FFD4B2" d="M70 39c20-18 50-18 68 0 11 12 13 37 4 55-11 23-38 32-59 18-30-19-36-51-13-73Z"/>
+    <circle cx="90" cy="66" r="5" fill="#2E221D"/>
+    <circle cx="123" cy="66" r="5" fill="#2E221D"/>
+    <circle cx="91" cy="65" r="1.5" fill="#FFF"/><circle cx="124" cy="65" r="1.5" fill="#FFF"/>
+    <path stroke="#2E221D" stroke-linecap="round" stroke-width="4" d="M96 88c8 7 17 7 25 0"/>
+    <path fill="#FFD4B2" d="M34 120c7-8 20-8 29-2l17 11-4 24-39-1c-12-11-11-22-3-32Z"/>
+    <path fill="#FFD4B2" d="M143 118c10-8 24-8 33 1 8 8 8 22-2 31h-40l-4-24 13-8Z"/>
+    <path fill="url(#redSuit)" d="M48 124c21-9 63-10 87 0 16 7 26 25 25 47H24c-1-22 9-39 24-47Z"/>
+    <path fill="#FF9A78" d="M65 129c17-5 38-5 55 0-10 4-25 7-40 7-10 0-18-2-25-4l10-3Z" opacity=".45"/>
+    <path fill="#F8F1E6" d="M92 115h18l7 20-16 12-16-12 7-20Z"/>
+    <rect width="18" height="30" x="5" y="118" fill="#D7DEE8" rx="8"/>
+    <rect width="18" height="30" x="150" y="116" fill="#D7DEE8" rx="8"/>
+    <circle cx="14" cy="133" r="7" fill="#8FC8FF"/>
+    <circle cx="159" cy="131" r="7" fill="#8FC8FF"/>
+    <path fill="#F6B53A" d="M17 117h17l8 9-14 13H8v-14l9-8Z"/>
+  </g>
+  <g transform="translate(170 18)">
+    <path fill="url(#botBody)" d="M34 96c19-14 64-14 82 0 11 9 19 26 18 47H16c-1-21 7-38 18-47Z"/>
+    <path fill="#FFC664" d="M52 100c17-7 45-7 62 0-11 5-25 8-39 8-10 0-18-2-25-5l2-3Z" opacity=".45"/>
+    <rect width="96" height="68" x="26" y="20" fill="url(#botMetal)" rx="34"/>
+    <rect width="52" height="40" x="48" y="34" fill="#454B59" rx="20"/>
+    <circle cx="64" cy="54" r="9" fill="#FF6A55"/>
+    <circle cx="84" cy="54" r="9" fill="#FF6A55"/>
+    <circle cx="64" cy="52" r="3" fill="#FFD5D0"/><circle cx="84" cy="52" r="3" fill="#FFD5D0"/>
+    <path fill="#FFB53F" d="M64 10h18l8 10v12H56V20l8-10Z"/>
+    <rect width="18" height="38" x="4" y="96" fill="#D8DEE7" rx="9"/>
+    <rect width="18" height="38" x="128" y="96" fill="#D8DEE7" rx="9"/>
+    <path fill="#D8DEE7" d="m2 105 22 6-5 18-17-5v-19Zm130 3 20 13-11 15-14-10 5-18Z"/>
+    <path fill="#FFFFFF" d="M38 26h72c-8 6-19 9-32 9-16 0-29-3-40-9Z" opacity=".32"/>
+  </g>
+  <defs>
+    <filter id="shadow" width="320" height="190" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" flood-color="#000" flood-opacity=".18" stdDeviation="6"/>
+    </filter>
+  </defs>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 96" fill="none">
+  <defs>
+    <linearGradient id="cash1" x1="22" x2="100" y1="18" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B6FF6A"/>
+      <stop offset="1" stop-color="#4DBD37"/>
+    </linearGradient>
+    <linearGradient id="cash2" x1="30" x2="92" y1="30" y2="66" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8FF99"/>
+      <stop offset="1" stop-color="#78DB52"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="40" x="16" y="30" fill="#5BAE3E" rx="8" transform="rotate(-10 16 30)"/>
+  <rect width="68" height="42" x="34" y="24" fill="#76DA4D" rx="8" transform="rotate(6 34 24)"/>
+  <rect width="72" height="44" x="24" y="30" fill="url(#cash1)" stroke="#24561A" stroke-width="5" rx="10"/>
+  <rect width="44" height="20" x="38" y="42" fill="url(#cash2)" rx="10"/>
+  <circle cx="60" cy="52" r="11" fill="#2E7B22"/>
+  <path fill="#D9FF9A" d="M60 41c7 0 13 5 13 11s-6 11-13 11-13-5-13-11 6-11 13-11Zm-4 5v12h7c3 0 6-2 6-6s-3-6-6-6h-7Z"/>
+  <path fill="#F0FFD2" d="M32 35h56c-8 8-21 13-34 13-10 0-18-3-22-7v-6Z" opacity=".32"/>
+  <path fill="#24561A" d="M34 67h52v4H34z" opacity=".18"/>
+</svg>

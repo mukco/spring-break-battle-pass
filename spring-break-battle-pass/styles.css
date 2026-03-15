@@ -1,0 +1,158 @@
+:root {
+  --bg: #f4f7ff;
+  --text: #0b1020;
+  --muted: rgba(11, 16, 32, 0.62);
+
+  --stroke: rgba(11, 16, 32, 0.14);
+  --stroke-2: rgba(11, 16, 32, 0.22);
+
+  --accent: #ff6a00;
+  --accent-2: #ffb000;
+  --blue: #00a3ff;
+  --mint: #2fe7b5;
+  --good: #10b981;
+  --bad: #ef4444;
+
+  --bronze: #cc7a2a;
+  --silver: #a3b7d1;
+  --gold: #ffcc33;
+
+  --shadow: 0 24px 80px rgba(11, 16, 32, 0.18);
+  --shadow-tight: 0 12px 28px rgba(11, 16, 32, 0.16);
+  --radius: 22px;
+  --radius-sm: 14px;
+  --ring: 0 0 0 4px rgba(255, 106, 0, 0.22);
+
+  --tile: rgba(255, 255, 255, 0.92);
+  --tile-2: rgba(255, 255, 255, 0.76);
+
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%230b1020' stroke-opacity='.08'%3E%3Cpath d='M0 16h96M0 48h96M0 80h96'/%3E%3Cpath d='M16 0v96M48 0v96M80 0v96'/%3E%3C/g%3E%3Cg fill='%23ff6a00' fill-opacity='.08'%3E%3Cpath d='M16 16l8-8 8 8-8 8zM64 64l8-8 8 8-8 8z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Sora, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 720px at 12% 8%, rgba(255, 106, 0, 0.22), transparent 60%),
+    radial-gradient(980px 650px at 86% 10%, rgba(0, 163, 255, 0.18), transparent 62%),
+    radial-gradient(820px 520px at 60% 92%, rgba(47, 231, 181, 0.18), transparent 62%),
+    var(--pattern),
+    linear-gradient(180deg, var(--bg) 0%, #e8eeff 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.68), transparent 30%, rgba(255, 255, 255, 0.22));
+  opacity: 0.9;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.panel {
+  background: linear-gradient(180deg, var(--tile), var(--tile-2));
+  border: 1px solid rgba(11, 16, 32, 0.12);
+  border-radius: 28px;
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+a {
+  color: #006fd6;
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.14s ease;
+}
+
+a:hover {
+  color: #005fc0;
+}
+
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 10px;
+}
+
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+button:active {
+  transform: translateY(0px);
+  filter: brightness(0.99);
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+button:disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+}
+
+.btn-ghost {
+  background: rgba(11, 16, 32, 0.06);
+  color: var(--text);
+  border: 1px solid rgba(11, 16, 32, 0.14);
+}
+
+.btn-danger {
+  background: var(--bad);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

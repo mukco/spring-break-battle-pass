@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rules - Spring Break Battle Pass</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .wrap {
+        max-width: 980px;
+      }
+
+      .panel {
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .panel::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background:
+          url("./assets/stripe-corners.svg") right top / 180px 180px no-repeat,
+          url("./assets/burst-ring.svg") left -20px top -28px / 150px 150px no-repeat,
+          radial-gradient(900px 300px at 10% 0%, rgba(255, 106, 0, 0.2), transparent 62%),
+          radial-gradient(780px 280px at 90% 0%, rgba(0, 163, 255, 0.14), transparent 60%),
+          linear-gradient(135deg, rgba(11, 16, 32, 0.06), transparent 45%);
+        opacity: 0.92;
+        pointer-events: none;
+      }
+
+      .panel > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        line-height: 0.95;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(11, 16, 32, 0.12);
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .tag::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background: url("./assets/badge-star.svg") center/contain no-repeat;
+      }
+
+      .sub {
+        color: var(--muted);
+        margin: 6px 0 0;
+        max-width: 72ch;
+        line-height: 1.45;
+      }
+
+      .rules {
+        display: grid;
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .rule-card {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(11, 16, 32, 0.12);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 14px 30px rgba(11, 16, 32, 0.08);
+        backdrop-filter: blur(1.5px);
+      }
+
+      .rule-card h3 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .rule-card p,
+      .rule-card li {
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .rule-card p {
+        margin: 0;
+      }
+
+      .rule-card ul {
+        margin: 10px 0 0 18px;
+        padding: 0;
+      }
+
+      .time-table {
+        display: grid;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .time-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        background: rgba(11, 16, 32, 0.06);
+        border-radius: 12px;
+        padding: 10px 12px;
+        color: var(--text);
+        border: 1px solid rgba(11, 16, 32, 0.1);
+      }
+
+      .footer-note {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        text-align: center;
+        text-wrap: balance;
+      }
+
+      @media (max-width: 480px) {
+        .wrap {
+          padding: 12px;
+        }
+        .panel {
+          padding: 16px;
+          border-radius: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <main class="panel">
+        <div class="top">
+          <div>
+            <div class="tag">Reward Guide</div>
+            <h1>Rules</h1>
+            <p class="sub">Reference page for how rewards and completion work.</p>
+          </div>
+          <div>
+            <a href="./index.html" aria-label="Back to battle pass">Back to board</a>
+          </div>
+        </div>
+
+        <div class="rules">
+          <div class="rule-card">
+            <h3>How the +5 minutes works</h3>
+            <p>
+              Each challenge can be redeemed for
+              <strong>+5 minutes added to bedtime tonight</strong>. The minutes stack
+              on the same day.
+            </p>
+            <div class="time-table" id="bedtimeTable"></div>
+          </div>
+
+          <div class="rule-card">
+            <h3>Cash option</h3>
+            <p>
+              Instead of bedtime minutes, a completed challenge can be redeemed for
+              <strong>$5 cash</strong>. Each challenge can only be counted once.
+            </p>
+            <ul>
+              <li>1 challenge = $5</li>
+              <li>3 challenges = $15</li>
+              <li>6 challenges = $30</li>
+              <li>12 challenges = $60</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <h3>Completion rules</h3>
+            <ul>
+              <li>The challenge must be finished.</li>
+              <li>The kid has to show what they made or did.</li>
+              <li>For bedtime rewards, finish before dinner to use the minutes that night.</li>
+              <li>Max bedtime bonus is 30 minutes for one night.</li>
+              <li>Unused bedtime minutes do not roll over to the next day.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <h3>Hosting at home with ngrok</h3>
+            <p>
+              Run a simple local server in the folder, then point ngrok to that port.
+            </p>
+            <ul>
+              <li><code>python3 -m http.server 8081</code></li>
+              <li><code>ngrok http 8081</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          This page doesn't change progress; it only explains how rewards work.
+        </div>
+      </main>
+    </div>
+
+    <script src="./rules.js" defer></script>
+  </body>
+</html>

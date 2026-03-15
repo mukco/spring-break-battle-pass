@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - Spring Break Battle Pass</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .wrap {
+        max-width: 1100px;
+      }
+
+      .panel {
+        padding: 22px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .panel::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background:
+          url("../assets/stripe-corners.svg") right top / 180px 180px no-repeat,
+          url("../assets/burst-ring.svg") left -20px top -28px / 150px 150px no-repeat,
+          radial-gradient(900px 300px at 10% 0%, rgba(255, 106, 0, 0.2), transparent 62%),
+          radial-gradient(780px 280px at 90% 0%, rgba(0, 163, 255, 0.14), transparent 60%),
+          linear-gradient(135deg, rgba(11, 16, 32, 0.06), transparent 45%);
+        opacity: 0.92;
+        pointer-events: none;
+      }
+
+      .panel > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: start;
+        flex-wrap: wrap;
+        margin-bottom: 2px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(11, 16, 32, 0.12);
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .tag::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background: url("../assets/badge-star.svg") center/contain no-repeat;
+      }
+
+      h1 {
+        margin: 14px 0 0;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        line-height: 0.95;
+      }
+
+      .sub {
+        color: var(--muted);
+        margin: 8px 0 0;
+        max-width: 70ch;
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(11, 16, 32, 0.12);
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: var(--shadow-tight);
+        backdrop-filter: blur(1.5px);
+      }
+
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .card p,
+      .card li {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .card p {
+        max-width: 58ch;
+      }
+
+      .toggle-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(11, 16, 32, 0.08);
+      }
+
+      .toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(11, 16, 32, 0.14);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        padding: 8px 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-size: 0.72rem;
+      }
+
+      .toggle input {
+        width: 44px;
+        height: 26px;
+        appearance: none;
+        border-radius: 999px;
+        background: rgba(11, 16, 32, 0.18);
+        position: relative;
+        outline: none;
+        cursor: pointer;
+        transition: background 0.16s ease, box-shadow 0.16s ease;
+      }
+
+      .toggle input::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 6px 18px rgba(11, 16, 32, 0.2);
+        transition: transform 0.16s ease;
+      }
+
+      .toggle input:checked {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      }
+
+      .toggle input:checked::after {
+        transform: translateX(18px);
+      }
+
+      .toggle input:focus-visible {
+        box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.22);
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .status {
+        font-weight: 900;
+        color: rgba(11, 16, 32, 0.8);
+        min-height: 1.25em;
+      }
+
+      .editor-card {
+        margin-top: 18px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 420px;
+        resize: vertical;
+        border-radius: 18px;
+        border: 1px solid rgba(11, 16, 32, 0.14);
+        background: rgba(255, 255, 255, 0.84);
+        padding: 14px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.5;
+        color: rgba(11, 16, 32, 0.92);
+        margin-top: 14px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      }
+
+      textarea:focus-visible {
+        outline: none;
+        box-shadow: var(--ring);
+      }
+
+      .hint {
+        color: var(--muted);
+        margin: 12px 0 0;
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+
+      .admin-status {
+        margin-left: auto;
+      }
+
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .wrap {
+          padding: 12px;
+        }
+
+        .panel {
+          padding: 16px;
+          border-radius: 20px;
+        }
+
+        .admin-status {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <main class="panel">
+        <div class="top">
+          <div>
+            <div class="tag">Control Room</div>
+            <h1>Settings</h1>
+            <p class="sub">
+              Private page for board effects and challenge editing. The game board stays clean for players.
+            </p>
+          </div>
+          <div>
+            <a href="../index.html">Back to board</a>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section class="card">
+            <h2>Celebrations</h2>
+            <p>Turn confetti bursts on or off when a challenge gets completed.</p>
+            <div class="toggle-row">
+              <strong>Confetti effects</strong>
+              <label class="toggle">
+                <span>On</span>
+                <input id="celebrateToggle" type="checkbox" />
+              </label>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Sound</h2>
+            <p>Play a short success beep when a challenge is checked off.</p>
+            <div class="toggle-row">
+              <strong>Success sound</strong>
+              <label class="toggle">
+                <span>On</span>
+                <input id="soundToggle" type="checkbox" />
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" id="testSoundBtn" type="button">Test Sound</button>
+          <button class="btn-ghost" id="testConfettiBtn" type="button">Test Celebration</button>
+          <span class="status" id="settingsStatus">Settings loaded.</span>
+        </div>
+
+        <section class="card editor-card">
+          <h2>Challenge Editor</h2>
+          <p>Update the challenge cards shown on the board.</p>
+
+          <div class="actions">
+            <button class="btn-ghost" id="reloadBtn" type="button">Reload</button>
+            <button class="btn-primary" id="saveBtn" type="button">Save changes</button>
+            <button class="btn-danger" id="resetDefaultBtn" type="button">Reset to defaults</button>
+            <span class="status admin-status" id="adminStatus"></span>
+          </div>
+
+          <textarea id="editor" spellcheck="false"></textarea>
+          <div class="hint">
+            Format: JSON array of 12 or more items. Each item must have: <code>id</code>, <code>title</code>,
+            <code>description</code>, <code>level</code> (bronze/silver/gold).
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../fun.js" defer></script>
+    <script src="../confetti.js" defer></script>
+    <script src="./settings.js" defer></script>
+  </body>
+</html>

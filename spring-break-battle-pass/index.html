@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spring Break Battle Pass</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Nunito:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-top: #292b48;
+        --bg-bottom: #121420;
+        --shell: #2a2d41;
+        --shell-2: #1f2232;
+        --frame: #f39d18;
+        --frame-dark: #7d420f;
+        --ink: #22180f;
+        --cream: #f7ecd8;
+        --cream-2: #ecd8ae;
+        --silver: #dce6f6;
+        --silver-2: #b9c6dc;
+        --gold: #ffe59d;
+        --gold-2: #efc55a;
+        --bronze-head: #6a3415;
+        --silver-head: #384d6f;
+        --gold-head: #845711;
+        --text: #f5f6fb;
+        --muted: rgba(245, 246, 251, 0.82);
+        --shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: Nunito, system-ui, sans-serif;
+        line-height: 1.35;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        background:
+          linear-gradient(rgba(20, 18, 34, 0.78), rgba(10, 10, 18, 0.9)),
+          url("./caydens-spring-break-battle-pass.png") center top / cover fixed no-repeat,
+          linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 15% 12%, rgba(255, 188, 40, 0.12), transparent 18%),
+          radial-gradient(circle at 78% 8%, rgba(127, 164, 255, 0.12), transparent 16%);
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 18px;
+      }
+
+      .board {
+        background: linear-gradient(180deg, #343855, #232638 58%, #1a1c29);
+        border: 4px solid #48506d;
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        padding: 14px;
+        backdrop-filter: blur(6px);
+        overflow: hidden;
+      }
+
+      .banner,
+      .reward-strip,
+      .progress-panel,
+      .footer-banner {
+        border-radius: 24px;
+        border: 4px solid var(--frame);
+        box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08), var(--shadow);
+      }
+
+      .banner {
+        min-height: 260px;
+        display: block;
+        padding: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
+          url("./caydens-spring-break-battle-pass.png") center 8% / cover no-repeat;
+        position: relative;
+      }
+
+      .banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        box-shadow: inset 0 -90px 80px rgba(17, 17, 28, 0.28), inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+        pointer-events: none;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .reward-strip {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1.25fr 90px 0.8fr;
+        overflow: hidden;
+        background: linear-gradient(180deg, #463846, #2d2a35);
+      }
+
+      .reward-panel,
+      .reward-or {
+        display: flex;
+        align-items: center;
+      }
+
+      .reward-panel {
+        gap: 14px;
+        padding: 12px 18px;
+        text-transform: uppercase;
+        min-height: 92px;
+      }
+
+      .reward-panel.bedtime {
+        background: linear-gradient(180deg, #4f3d36, #322930);
+      }
+
+      .reward-panel.cash {
+        background: linear-gradient(180deg, #2f6b22, #204a1d);
+      }
+
+      .reward-or {
+        justify-content: center;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: 800;
+      }
+
+      .reward-icon {
+        width: 76px;
+        height: 76px;
+        object-fit: contain;
+        flex: 0 0 76px;
+      }
+
+      .reward-label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-weight: 800;
+        line-height: 0.9;
+      }
+
+      .reward-label .big {
+        display: block;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #ffbc28;
+      }
+
+      .reward-panel.cash .reward-label .big {
+        color: #e0ff71;
+      }
+
+      .reward-label .small {
+        display: block;
+        font-size: clamp(1.2rem, 2.8vw, 2rem);
+      }
+
+      .progress-panel {
+        margin-top: 12px;
+        background: linear-gradient(180deg, #382f44, #292633);
+        padding: 14px;
+      }
+
+      .progress-grid {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .progress-box,
+      .track-wrap,
+      .stat,
+      .challenge {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      }
+
+      .progress-box {
+        min-height: 118px;
+        border-radius: 18px;
+        padding: 14px;
+        background: linear-gradient(180deg, #3e4157, #272a3f);
+        border: 2px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .progress-box .label {
+        display: block;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        letter-spacing: 0.03em;
+      }
+
+      .progress-box .value {
+        display: block;
+        margin-top: 2px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: clamp(3rem, 6vw, 4.8rem);
+        line-height: 0.92;
+      }
+
+      .track-wrap {
+        border-radius: 22px;
+        padding: 12px 14px;
+        background: linear-gradient(180deg, #4a4053, #2f2b36);
+        border: 2px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .track {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(52px, 1fr));
+        gap: 10px;
+      }
+
+      .slot {
+        aspect-ratio: 1 / 1;
+        border: 0;
+        border-radius: 14px;
+        background: linear-gradient(180deg, #f4f4f7, #d8d9df);
+        box-shadow: inset 0 0 0 3px #7d808b, 0 4px 0 rgba(0, 0, 0, 0.24);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease;
+      }
+
+      .slot:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.02);
+      }
+
+      .slot.done {
+        background: linear-gradient(180deg, #fff5a2, #ffc32b);
+        box-shadow: inset 0 0 0 3px #fff0ae, 0 4px 0 rgba(0, 0, 0, 0.24);
+      }
+
+      .slot.active-target {
+        box-shadow: inset 0 0 0 3px #bfe3ff, 0 0 0 4px rgba(143, 184, 255, 0.24), 0 4px 0 rgba(0, 0, 0, 0.24);
+      }
+
+      .slot:focus-visible {
+        outline: none;
+        box-shadow:
+          inset 0 0 0 3px #bfe3ff,
+          0 0 0 5px rgba(255, 184, 40, 0.4),
+          0 4px 0 rgba(0, 0, 0, 0.24);
+      }
+
+      .slot .stamp {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-family: "Barlow Condensed", sans-serif;
+        font-style: italic;
+        font-size: 0.88rem;
+        font-weight: 800;
+        color: rgba(49, 31, 0, 0.82);
+        text-transform: uppercase;
+        opacity: 0;
+        transform: rotate(-8deg) scale(0.8);
+        transition: transform 0.16s ease, opacity 0.16s ease;
+      }
+
+      .slot-number {
+        transition: opacity 0.16s ease;
+      }
+
+      .slot.done .stamp {
+        opacity: 1;
+        transform: rotate(-8deg) scale(1);
+      }
+
+      .slot.done .slot-number {
+        opacity: 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .stat {
+        border-radius: 18px;
+        padding: 12px 14px;
+        background: linear-gradient(180deg, #3d4159, #282b40);
+        border: 2px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat-label {
+        text-transform: uppercase;
+        color: var(--muted);
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.96rem;
+        font-weight: 700;
+      }
+
+      .stat-value {
+        margin-top: 2px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.9rem;
+        font-style: italic;
+        font-weight: 800;
+      }
+
+      .save-controls {
+        margin-top: 12px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .board-btn {
+        border: 0;
+        border-radius: 14px;
+        padding: 10px 14px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.1rem;
+        font-style: italic;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+        transition: transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease;
+      }
+
+      .board-btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+
+      .board-btn:active {
+        transform: translateY(0);
+        filter: brightness(0.99);
+      }
+
+      .board-btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(255, 188, 40, 0.34), 0 6px 16px rgba(0, 0, 0, 0.26);
+      }
+
+      .board-btn.ghost {
+        background: linear-gradient(180deg, #585f79, #41465b);
+        color: var(--text);
+      }
+
+      .board-btn.danger {
+        background: linear-gradient(180deg, #ff7e63, #c84035);
+        color: white;
+      }
+
+      .challenge-board {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .challenge-group {
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 4px solid var(--frame);
+      }
+
+      .challenge-group.bronze {
+        background: linear-gradient(180deg, #863d18, #572913 26%, #f5d39f 26%, #f1c98a 100%);
+      }
+
+      .challenge-group.silver {
+        background: linear-gradient(180deg, #44618f, #314766 26%, #dfe6f2 26%, #cdd8eb 100%);
+      }
+
+      .challenge-group.gold {
+        background: linear-gradient(180deg, #9d6a16, #7a5211 26%, #ffe6a3 26%, #f3d272 100%);
+      }
+
+      .challenge-group h3 {
+        margin: 0;
+        padding: 16px 12px 14px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-style: italic;
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: 0.03em;
+      }
+
+      .challenge-list {
+        display: grid;
+        gap: 10px;
+        padding: 10px 10px 14px;
+      }
+
+      .challenge {
+        position: relative;
+        display: grid;
+        grid-template-columns: 38px 64px 1fr;
+        column-gap: 12px;
+        row-gap: 10px;
+        align-items: start;
+        padding: 12px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, var(--cream), #f3dbb3);
+        color: var(--ink);
+        border: 2px solid rgba(107, 73, 29, 0.18);
+        transition: transform 0.14s ease, box-shadow 0.14s ease;
+      }
+
+      .challenge:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 9px 20px rgba(33, 20, 7, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+      }
+
+      .challenge > * {
+        min-width: 0;
+      }
+
+      .challenge-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .challenge-group.silver .challenge {
+        background: linear-gradient(180deg, #edf2f9, #dce5f1);
+        color: #1f2e47;
+        border-color: rgba(46, 72, 109, 0.16);
+      }
+
+      .challenge-group.gold .challenge {
+        background: linear-gradient(180deg, #fff1bc, #f6de8a);
+        color: #3a2b0f;
+        border-color: rgba(114, 82, 15, 0.16);
+      }
+
+      .challenge.spotlight {
+        outline: 4px solid rgba(143, 184, 255, 0.28);
+      }
+
+      .challenge-toggle {
+        width: 38px;
+        height: 38px;
+        margin: 0;
+        appearance: none;
+        border: 3px solid rgba(43, 34, 21, 0.52);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.85);
+        cursor: pointer;
+        position: relative;
+        transition: box-shadow 0.14s ease, border-color 0.14s ease;
+      }
+
+      .challenge-toggle {
+        align-self: start;
+        margin-top: 6px;
+      }
+
+      .challenge-toggle::after {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border-radius: 6px;
+        background: linear-gradient(180deg, #ffcb57, #ff8b21);
+        opacity: 0;
+        transform: scale(0.6);
+        transition: transform 0.16s ease, opacity 0.16s ease;
+      }
+
+      .challenge-toggle:checked::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .challenge-toggle:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(255, 188, 40, 0.3);
+      }
+
+      .challenge-art {
+        width: 64px;
+        height: 64px;
+        border-radius: 20px;
+        overflow: hidden;
+        align-self: start;
+        margin-top: 2px;
+      }
+
+      .challenge-art img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .challenge-main {
+        min-width: 0;
+      }
+
+      .challenge-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(1.25rem, 1.6vw, 1.65rem);
+        font-weight: 800;
+        font-style: italic;
+        text-transform: uppercase;
+        line-height: 0.95;
+      }
+
+      .challenge-desc,
+      .level-chip {
+        display: block;
+      }
+
+      .level-chip {
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.95rem;
+        font-style: italic;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        background: rgba(33, 28, 25, 0.1);
+        white-space: nowrap;
+      }
+
+      .level-chip.bronze {
+        background: rgba(255, 151, 76, 0.22);
+      }
+
+      .level-chip.silver {
+        background: rgba(120, 170, 255, 0.22);
+      }
+
+      .level-chip.gold {
+        background: rgba(255, 196, 60, 0.25);
+      }
+
+      .challenge-desc {
+        margin-top: 4px;
+        color: rgba(34, 24, 15, 0.78);
+        line-height: 1.28;
+        font-size: 0.95rem;
+        max-width: 60ch;
+      }
+
+      .challenge-group.silver .challenge-desc {
+        color: rgba(31, 46, 71, 0.78);
+      }
+
+      .challenge-group.gold .challenge-desc {
+        color: rgba(58, 43, 15, 0.78);
+      }
+
+      .reward-buttons {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+        align-items: center;
+      }
+
+      .reward-btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 6px 12px;
+        background: rgba(33, 28, 25, 0.1);
+        color: inherit;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.9rem;
+        font-style: italic;
+        font-weight: 800;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease;
+      }
+
+      .reward-btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+
+      .reward-btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(255, 188, 40, 0.3);
+      }
+
+      .reward-btn.active {
+        background: linear-gradient(180deg, #ffcc57, #ff9227);
+        color: #2b1e0b;
+      }
+
+      .reward-btn.cash.active {
+        background: linear-gradient(180deg, #8efb73, #3dc254);
+        color: #17301b;
+      }
+
+      .footer-banner {
+        margin-top: 14px;
+        padding: 18px 22px;
+        background: linear-gradient(180deg, #332d46, #252737);
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(1.6rem, 3vw, 2.9rem);
+        font-style: italic;
+        font-weight: 800;
+        line-height: 0.95;
+      }
+
+      .footer-banner strong {
+        color: #ffbc28;
+        font-size: 1.2em;
+      }
+
+      .footer-note {
+        margin-top: 10px;
+        text-align: center;
+        color: rgba(245, 246, 251, 0.7);
+        font-size: 0.92rem;
+        text-wrap: balance;
+      }
+
+      @media (max-width: 980px) {
+        .progress-grid,
+        .challenge-board {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .banner,
+        .reward-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .banner {
+          min-height: 180px;
+          background-position: center 10%;
+        }
+
+        .reward-or {
+          padding: 6px 0;
+        }
+
+        .track {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .challenge-desc {
+          max-width: none;
+          font-size: 1rem;
+          line-height: 1.3;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .challenge-board {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .challenge {
+          padding: 14px;
+          column-gap: 14px;
+          row-gap: 10px;
+        }
+
+        .challenge-title {
+          font-size: 1.85rem;
+        }
+
+        .challenge-desc {
+          font-size: 0.98rem;
+          line-height: 1.3;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .challenge {
+          grid-template-columns: 38px 1fr;
+          align-items: start;
+          gap: 12px;
+          padding: 12px;
+        }
+
+        .challenge-art {
+          grid-column: 2;
+          justify-self: start;
+        }
+
+        .challenge-main {
+          grid-column: 2;
+        }
+
+        .challenge-toggle {
+          margin-top: 6px;
+        }
+
+        .challenge-art {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <main class="board">
+        <section class="banner">
+          <h1 class="sr-only">Cayden's Spring Break Battle Pass</h1>
+        </section>
+
+        <section class="reward-strip" aria-label="Rewards">
+          <div class="reward-panel bedtime">
+            <img class="reward-icon" src="./assets/reward-clock.svg" alt="Clock reward" />
+            <div class="reward-label">
+              <span class="big">+5 Minutes</span>
+              <span class="small">Bedtime</span>
+            </div>
+          </div>
+          <div class="reward-or">OR</div>
+          <div class="reward-panel cash">
+            <img class="reward-icon" src="./assets/reward-cash.svg" alt="Cash reward" />
+            <div class="reward-label">
+              <span class="big">$5</span>
+              <span class="small">Cash</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="progress-panel">
+          <div class="progress-grid">
+            <div class="progress-box">
+              <span class="label">Challenges</span>
+              <span class="value" id="challengeCount">0 / 12</span>
+            </div>
+            <div class="track-wrap">
+              <div class="track" id="progressTrack" aria-label="Progress track"></div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-label">Bedtime reward chosen</div>
+              <div class="stat-value" id="bedtimeMinutes">0 min</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Cash reward chosen</div>
+              <div class="stat-value" id="cashTotal">$0</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">If normal bedtime is 10:00 PM</div>
+              <div class="stat-value" id="newBedtime">10:00 PM</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Challenges done</div>
+              <div class="stat-value" id="doneCount">0</div>
+            </div>
+          </div>
+
+          <div class="save-controls">
+            <button class="board-btn ghost" id="saveBtn" type="button">Save Now</button>
+            <button class="board-btn danger" id="resetBtn" type="button">Reset All</button>
+          </div>
+        </section>
+
+        <section class="challenge-board" id="challengeGroups"></section>
+
+        <section class="footer-banner">
+          Complete any <strong>12</strong> challenges - in any order!
+        </section>
+      </main>
+
+      <div class="footer-note">Progress stays saved in this browser on this device.</div>
+    </div>
+
+    <script src="./fun.js" defer></script>
+    <script src="./confetti.js" defer></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="10" x2="86" y1="10" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE8AE"/>
+      <stop offset="1" stop-color="#FFB92E"/>
+    </linearGradient>
+    <linearGradient id="glove" x1="26" x2="64" y1="30" y2="70" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7A57"/>
+      <stop offset="1" stop-color="#C63A31"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" fill="url(#bg)" rx="22"/>
+  <path fill="#FFF1B8" d="M18 18h60c-9 9-21 13-35 13-10 0-19-2-25-7v-6Z" opacity=".24"/>
+  <path fill="url(#glove)" stroke="#5C1D1C" stroke-width="5" d="M24 58c0-11 7-20 18-24l7-3 10 9-3 16-11 10H31c-4-2-7-5-7-8Z"/>
+  <path fill="#FFE0C8" d="M49 28c5 0 11 3 14 8l-7 7-12-10 5-4Z"/>
+  <path fill="#5C1D1C" d="M58 40h8v8h-8z"/>
+  <path fill="#FFB03C" d="M60 52h18v11H60z" rx="5"/>
+  <path fill="#5C1D1C" d="M65 55h3v5h-3Zm6 0h3v5h-3Z"/>
+  <path stroke="#5C1D1C" stroke-linecap="round" stroke-width="4" d="M20 72h56" opacity=".28"/>
+</svg>
