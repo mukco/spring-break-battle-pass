@@ -7,82 +7,162 @@
     {
       id: 'ai-superhero',
       title: 'AI Superhero Creator',
-      description: 'Use AI to create a superhero with a name, powers, and a picture.',
+      description:
+        'Design your own original superhero with AI: pick a cool hero name, describe at least 3 powers, and generate character art you can show to the family.',
       level: 'bronze'
     },
     {
       id: 'robot-story',
       title: 'Robot Story Time',
-      description: 'Ask AI to write a story where you are the hero.',
+      description:
+        'Co-write a short robot adventure with AI where you are the main character. Give your hero a mission, a challenge, and a happy ending.',
       level: 'bronze'
     },
     {
       id: 'animal-mashups',
       title: 'Animal Mashups',
-      description: 'Use AI to invent 3 new animals.',
+      description:
+        'Invent 3 brand-new mashup animals with AI. Each one needs a name, where it lives, and one funny or helpful power.',
       level: 'bronze'
     },
     {
       id: 'overwatch-hero',
       title: 'Overwatch Hero Pick',
-      description: 'Pick an Overwatch hero and explain their powers.',
+      description:
+        'Pick one Overwatch hero and explain their abilities like a mini coach. Share when to use each ability and one smart team combo.',
       level: 'bronze'
     },
     {
-      id: 'outfit-picker',
-      title: 'Outfit Picker App',
-      description: 'Build an app that suggests outfits.',
+      id: 'kpop-trivia',
+      title: 'K-Pop Trivia Lightning Round',
+      description:
+        'Create a 10-question K-pop trivia game (groups, songs, and fun facts) and run it with the family. Try to beat your own score in round 2.',
+      level: 'bronze'
+    },
+    {
+      id: 'hangout-addi-cameron',
+      title: 'Friend Hangout Mission',
+      description:
+        'Plan and do a fun hangout with Addi or Cameron. Do one shared activity, be a great friend, and share your favorite part after.',
+      level: 'bronze'
+    },
+    {
+      id: 'oldies-dance-mom',
+      title: 'Oldies Dance with Mom',
+      description:
+        'Pick an oldies song and do a full dance with Mom. Add at least one silly spin or signature move to make it memorable.',
+      level: 'bronze'
+    },
+    {
+      id: 'spiderman-reading',
+      title: 'Spider-Man Comic Finish',
+      description:
+        'Finish reading a Spider-Man comic issue or chapter set. Share your favorite scene, favorite character moment, and one new thing you learned.',
+      level: 'silver'
+    },
+    {
+      id: 'muay-thai-twice',
+      title: 'Muay Thai x2',
+      description:
+        'Attend Muay Thai practice at least twice during spring break and show one combo or technique you improved between sessions.',
       level: 'silver'
     },
     {
       id: 'overwatch-role',
       title: 'Try a New Role',
-      description: 'Play 3 matches in a role you do not normally use.',
+      description:
+        'Play 3 Overwatch matches in a role you do not normally pick. Afterward, share what was hardest and one thing you got better at.',
       level: 'silver'
     },
     {
-      id: 'ai-dungeon',
-      title: 'AI Dungeon Game',
-      description: 'Create a text adventure game using AI.',
+      id: 'kpop-dance',
+      title: 'K-Pop Dance Practice',
+      description:
+        'Learn 20-30 seconds of a K-pop dance challenge and perform it for the family. Bonus points if you teach one move to someone else.',
       level: 'silver'
     },
     {
       id: 'dinner-picker',
       title: 'Random Dinner Picker',
-      description: 'Build an app that picks dinner randomly.',
+      description:
+        'Build a random dinner picker app with at least 8 meal options. Add a "re-spin" button so the family can reroll if needed.',
       level: 'silver'
-    },
-    {
-      id: 'ow-stats',
-      title: 'Win a Match with Top Stats',
-      description: 'Win an Overwatch match while getting top eliminations, damage, or healing.',
-      level: 'gold'
     },
     {
       id: 'ai-comic',
       title: 'Make an AI Comic',
-      description: 'Use AI to make a 4-panel comic strip.',
+      description:
+        'Use AI tools to create a 4-panel comic with a setup, a problem, and a funny ending. Add your own title and dialogue bubbles.',
+      level: 'silver'
+    },
+    {
+      id: 'family-dessert',
+      title: 'Dessert Chef Challenge',
+      description:
+        'Cook or bake a dessert for the family from start to finish, with help for safety if needed. Plate it nicely and serve everyone first.',
+      level: 'silver'
+    },
+    {
+      id: 'hour-with-sister',
+      title: 'One-Hour Sister Time',
+      description:
+        'Spend one full hour with your little sister doing activities she enjoys, with no rushing. Make her feel included and have fun together.',
+      level: 'silver'
+    },
+    {
+      id: 'ow-five-games-dad',
+      title: 'Overwatch Squad with Dad',
+      description:
+        'Play 5 Overwatch games with Dad as a team. Focus on communication, teamwork, and celebrating one good play each game.',
+      level: 'silver'
+    },
+    {
+      id: 'outfit-picker',
+      title: 'Outfit Picker App',
+      description:
+        'Build a simple app that suggests an outfit based on weather or activity. Include at least 3 outfit choices and one fun style mode.',
+      level: 'gold'
+    },
+    {
+      id: 'ai-dungeon',
+      title: 'AI Dungeon Game',
+      description:
+        'Create a short text adventure with AI that has at least 3 choices and 2 different endings. Let someone in the family play your game.',
+      level: 'gold'
+    },
+    {
+      id: 'ow-stats',
+      title: 'Win a Match with Top Stats',
+      description:
+        'Win an Overwatch match while earning top eliminations, top damage, or top healing on your team, then explain what helped you get there.',
       level: 'gold'
     },
     {
       id: 'ow-team-coach',
       title: 'Coach a Team Strategy',
-      description: 'Watch a replay and explain how to play better.',
+      description:
+        'Watch an Overwatch replay and act like a coach: point out 3 team strategy improvements and 1 thing the team already did well.',
       level: 'gold'
     },
     {
-      id: 'family-website',
-      title: 'Make a Family Website',
-      description: 'Use AI to build a website about the family.',
+      id: 'ai-family-game',
+      title: 'Invent an AI Family Game',
+      description:
+        'Use AI to invent a brand-new family game with clear rules, scoring, and a win condition. Play one full round together and improve one rule.',
       level: 'gold'
     },
     {
-      id: 'muay-thai-twice',
-      title: 'Muay Thai x2',
-      description: 'Go to muay thai twice during spring break.',
+      id: 'book-powerpoint',
+      title: 'Book to PowerPoint Project',
+      description:
+        'Finish reading a book and create a short PowerPoint presentation about it with characters, plot, favorite scene, and your final rating.',
       level: 'gold'
     }
   ];
+
+  const LEGACY_ID_MAP = {
+    'family-website': 'ai-family-game'
+  };
 
   const $ = (sel, root = document) => root.querySelector(sel);
 
@@ -122,10 +202,45 @@
       if (!raw) return null;
       const parsed = JSON.parse(raw);
       if (!Array.isArray(parsed)) return null;
-      return parsed;
+      return mergeChallengesWithDefaults(parsed);
     } catch {
       return null;
     }
+  }
+
+  function isValidChallenge(item) {
+    return (
+      item &&
+      typeof item === 'object' &&
+      typeof item.id === 'string' &&
+      typeof item.title === 'string' &&
+      typeof item.description === 'string' &&
+      typeof item.level === 'string' &&
+      ['bronze', 'silver', 'gold'].includes(item.level)
+    );
+  }
+
+  function mergeChallengesWithDefaults(stored) {
+    const byId = new Map();
+
+    for (const raw of stored) {
+      if (!isValidChallenge(raw)) continue;
+      const mappedId = LEGACY_ID_MAP[raw.id] || raw.id;
+      if (!mappedId || byId.has(mappedId)) continue;
+      byId.set(mappedId, { ...raw, id: mappedId });
+    }
+
+    const merged = [];
+    for (const def of DEFAULT_CHALLENGES) {
+      merged.push(byId.get(def.id) || def);
+      byId.delete(def.id);
+    }
+
+    for (const extra of byId.values()) {
+      merged.push(extra);
+    }
+
+    return merged;
   }
 
   function validateChallenges(arr) {

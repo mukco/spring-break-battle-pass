@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="10" x2="86" y1="10" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5FCDC"/>
+      <stop offset="1" stop-color="#88DB9B"/>
+    </linearGradient>
+    <linearGradient id="table" x1="16" x2="80" y1="26" y2="66" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#203553"/>
+      <stop offset="1" stop-color="#16253C"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="22" fill="url(#bg)"/>
+  <rect x="14" y="22" width="68" height="40" rx="10" fill="url(#table)" stroke="#101D30" stroke-width="4"/>
+  <rect x="22" y="30" width="52" height="24" rx="6" fill="#8DE6FF"/>
+  <path stroke="#1D3557" stroke-linecap="round" stroke-width="3" d="M28 36h14m-14 8h20m-20 8h12"/>
+  <circle cx="63" cy="42" r="9" fill="#FFD65D" stroke="#1D3557" stroke-width="3"/>
+  <path fill="#1D3557" d="m61 38 6 4-6 4-2-2 3-2-3-2 2-2Z"/>
+  <rect x="18" y="66" width="14" height="14" rx="4" fill="#FF9B47" stroke="#7A4317" stroke-width="3"/>
+  <rect x="36" y="66" width="14" height="14" rx="4" fill="#61B2FF" stroke="#224D7D" stroke-width="3"/>
+  <rect x="54" y="66" width="14" height="14" rx="4" fill="#FFD65A" stroke="#75530D" stroke-width="3"/>
+  <rect x="72" y="66" width="8" height="14" rx="3" fill="#FF7FB5" stroke="#7A2E53" stroke-width="3"/>
+</svg>

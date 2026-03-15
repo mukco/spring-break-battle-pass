@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="8" x2="88" y1="8" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD9F5"/>
+      <stop offset="1" stop-color="#A58AFF"/>
+    </linearGradient>
+    <linearGradient id="card" x1="20" x2="76" y1="20" y2="66" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9FF"/>
+      <stop offset="1" stop-color="#FFEAFE"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="22" fill="url(#bg)"/>
+  <circle cx="18" cy="18" r="4" fill="#FFD54F"/>
+  <circle cx="78" cy="14" r="3" fill="#7DE3FF"/>
+  <circle cx="84" cy="30" r="2.5" fill="#FFD54F"/>
+  <rect x="16" y="18" width="64" height="48" rx="12" fill="url(#card)" stroke="#372A54" stroke-width="4"/>
+  <rect x="22" y="25" width="28" height="6" rx="3" fill="#372A54"/>
+  <rect x="22" y="36" width="22" height="6" rx="3" fill="#6D5A95"/>
+  <rect x="22" y="47" width="16" height="6" rx="3" fill="#9D87C7"/>
+  <circle cx="62" cy="42" r="12" fill="#FF7EC5" stroke="#372A54" stroke-width="3"/>
+  <path fill="#FFF4FC" d="M59 36c3-1 6 1 6 4 0 3-3 4-4 6h-4c1-3 4-4 4-6 0-1-1-2-2-2s-2 0-3 1l-2-3c1-1 3-2 5-2Zm2 14v4h-4v-4h4Z"/>
+  <rect x="12" y="70" width="72" height="12" rx="6" fill="#2C2342"/>
+  <rect x="16" y="73" width="10" height="6" rx="3" fill="#FFD54F"/>
+  <rect x="30" y="73" width="18" height="6" rx="3" fill="#7DE3FF"/>
+  <rect x="52" y="73" width="14" height="6" rx="3" fill="#FF9BD2"/>
+</svg>

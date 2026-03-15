@@ -2,6 +2,7 @@
   'use strict';
 
   const BASE_BEDTIME_MINUTES = 22 * 60; // 10:00 PM
+  const tierValues = [2, 4, 6];
 
   const $ = (sel, root = document) => root.querySelector(sel);
 
@@ -20,12 +21,20 @@
     if (!table) return;
     table.innerHTML = '';
 
-    for (const count of [1, 2, 3, 4, 5, 6]) {
+    const examples = [
+      ['1 bronze challenge', tierValues[0]],
+      ['1 silver challenge', tierValues[1]],
+      ['1 gold challenge', tierValues[2]],
+      ['2 silver challenges', tierValues[1] * 2],
+      ['1 gold + 1 bronze', tierValues[2] + tierValues[0]],
+      ['2 gold challenges', tierValues[2] * 2]
+    ];
+
+    for (const [label, minutes] of examples) {
       const row = document.createElement('div');
       row.className = 'time-row';
-      const minutes = count * 5;
       const applied = minutes;
-      row.innerHTML = `<span>${count} challenge${count > 1 ? 's' : ''} = +${minutes} min</span><strong>${formatBedtime(
+      row.innerHTML = `<span>${label} = +${minutes} min</span><strong>${formatBedtime(
         BASE_BEDTIME_MINUTES + applied
       )}</strong>`;
       table.appendChild(row);
